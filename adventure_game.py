@@ -55,10 +55,36 @@ def forest_path(player_name):
             return "lose"
 
     else:
-        print("\nYou follow the river for hours and become hopelessly lost in the woods.")
-        print("Night falls, and the treasure remains far out of reach.")
-        end_game("lose", player_name)
-        return "lose"
+        print("\nYou follow the river downstream and discover an ancient stone bridge covered in moss.")
+        print("Across the bridge you can see the ruins of an old village.")
+
+        second_choice = get_choice(
+            "Do you 'cross' the bridge or 'search' the riverbank for clues? ",
+            ["cross", "search"]
+        )
+
+        if second_choice == "cross":
+            print("\nYou cross the bridge and explore the ruins. Hidden beneath a crumbled wall")
+            print("you find a tunnel that leads directly to the legendary treasure chamber!")
+            end_game("win", player_name)
+            return "win"
+        else:
+            print("\nYou search the riverbank and find faded carvings pointing deeper into the forest.")
+
+            third_choice = get_choice(
+                "Do you 'follow' the carvings deeper into the forest or 'turn back' to the bridge? ",
+                ["follow", "turn back"]
+            )
+
+            if third_choice == "follow":
+                print("\nThe carvings lead you to a hidden grove where the treasure is buried under a great oak tree!")
+                end_game("win", player_name)
+                return "win"
+            else:
+                print("\nYou head back to the bridge, but the path has vanished in the darkness.")
+                print("Night falls, and the treasure remains far out of reach.")
+                end_game("lose", player_name)
+                return "lose"
 
 
 # ---------------------------
@@ -92,9 +118,28 @@ def cave_path(player_name):
             return "lose"
 
     else:
-        print("\nWithout light, you stumble into a deep pit hidden in the darkness.")
-        end_game("lose", player_name)
-        return "lose"
+        print("\nYou press forward into the pitch-black cave. Every step is slow and uncertain.")
+        print("Suddenly a pair of glowing red eyes appear before you — a demon blocks the passage!")
+
+        second_choice = get_choice(
+            "Do you 'fight' the demon or 'flee' back toward the entrance? ",
+            ["fight", "flee"]
+        )
+
+        if second_choice == "fight":
+            print("\nYou stand your ground and battle the demon with everything you have.")
+            print("After a fierce struggle, the demon lets out a shriek and dissolves into shadow.")
+            print("Ahead of you, a faint glow appears at the far end of the tunnel.")
+            print("You push forward through the remaining darkness, moving steadily toward the light.")
+            print("The glow grows brighter until you step into a breathtaking underground vault —")
+            print("the legendary treasure gleams before you, lit by a beam of light from above!")
+            end_game("win", player_name)
+            return "win"
+        else:
+            print("\nYou turn and run, but the demon's shadow pursues you through the twisting passages.")
+            print("The darkness closes in and you lose your way entirely.")
+            end_game("lose", player_name)
+            return "lose"
 
 
 # ---------------------------
