@@ -118,9 +118,28 @@ def cave_path(player_name):
             return "lose"
 
     else:
-        print("\nWithout light, you stumble into a deep pit hidden in the darkness.")
-        end_game("lose", player_name)
-        return "lose"
+        print("\nYou press forward into the pitch-black cave. Every step is slow and uncertain.")
+        print("Suddenly a pair of glowing red eyes appear before you — a demon blocks the passage!")
+
+        second_choice = get_choice(
+            "Do you 'fight' the demon or 'flee' back toward the entrance? ",
+            ["fight", "flee"]
+        )
+
+        if second_choice == "fight":
+            print("\nYou stand your ground and battle the demon with everything you have.")
+            print("After a fierce struggle, the demon lets out a shriek and dissolves into shadow.")
+            print("Ahead of you, a faint glow appears at the far end of the tunnel.")
+            print("You push forward through the remaining darkness, moving steadily toward the light.")
+            print("The glow grows brighter until you step into a breathtaking underground vault —")
+            print("the legendary treasure gleams before you, lit by a beam of light from above!")
+            end_game("win", player_name)
+            return "win"
+        else:
+            print("\nYou turn and run, but the demon's shadow pursues you through the twisting passages.")
+            print("The darkness closes in and you lose your way entirely.")
+            end_game("lose", player_name)
+            return "lose"
 
 
 # ---------------------------
